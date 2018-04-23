@@ -8,12 +8,18 @@
 <body>
 <script>
   let pressed = [];
-  let secret = 'test';
+  let secret = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight","ArrowLeft", "ArrowRight", "b", "a"];
   window.addEventListener('keyup', (e) => {
+    console.log(e);
     pressed.push(e.key)
     pressed.splice(-secret.length - 1, pressed.length - secret.length);
-    if (pressed.join('').includes(secret)) {
-      console.log('it works');
+
+    if (pressed.length === secret.length) {
+      for (let i = 0; i < pressed.length; i++) {
+        if (pressed[i] !== secret[i]) {
+          return;
+        }
+      }
       cornify_add();
     }
     console.log(pressed);
