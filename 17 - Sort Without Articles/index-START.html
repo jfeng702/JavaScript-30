@@ -50,7 +50,7 @@ function strip(bandName) {
   return bandName.replace(/^(a |the |an )/i, '').trim();
 }
 
-const test = bands.sort((x,y) => {
+const sortedBands = bands.sort((x,y) => {
   if (strip(x) < strip(y)) {
     return -1;
   }
@@ -59,7 +59,12 @@ const test = bands.sort((x,y) => {
   }
   return 0;
 })
-console.log(test);
+
+document.querySelector('#bands').innerHTML = sortedBands.map(band => {
+  return `<li>${band}</li>`
+}).join('');
+
+console.log(sortedBands);
 
 </script>
 
